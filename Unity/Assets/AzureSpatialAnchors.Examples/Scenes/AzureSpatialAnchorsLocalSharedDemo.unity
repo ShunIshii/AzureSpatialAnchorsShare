@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05d7d02a6af8dd48aefdd862a1556e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchoredObjectPrefab: {fileID: 1147623660883556, guid: e593bfccf03b6444da88c7591f906ba8,
+  anchoredObjectPrefab: {fileID: 1144978573833690, guid: 6f0a6aba7f52f3149bc74b7daeb62f65,
     type: 3}
   cloudManager: {fileID: 294771742}
   baseSharingUrl: https://sharingservice20200411112523.azurewebsites.net/swagger/index.html
