@@ -22,6 +22,7 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         protected GameObject spawnedObject = null;
         protected Material spawnedObjectMat = null;
         protected bool enableAdvancingOnSelect = true;
+        private bool isSpawing = false;
         #endregion // Member Variables
 
         #region Unity Inspector Variables

@@ -70,12 +70,15 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         private readonly List<string> localAnchorIds = new List<string>();
         private string _anchorKeyToFind = null;
         private long? _anchorNumberToFind;
+        private Vector3 myPos;
         #endregion // Member Variables
 
         #region Unity Inspector Variables
         [SerializeField]
         [Tooltip("The base URL for the example sharing service.")]
         private string baseSharingUrl = "";
+        [SerializeField] private GameObject personPrefab;
+        [SerializeField] private GameObject device;
         #endregion // Unity Inspector Variables
 
         private AppState currentAppState
@@ -118,10 +121,11 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
 
                     #if UNITY_ANDROID || UNITY_IOS
                     anchorPose = currentCloudAnchor.GetPose();
-                    #endif
+#endif
                     // HoloLens: The position will be set based on the unityARUserAnchor that was located.
 
                     GameObject nextObject = SpawnNewAnchoredObject(anchorPose.position, anchorPose.rotation, currentCloudAnchor);
+                    myPos = nextObject.transform.position;
                     spawnedObjectMat = nextObject.GetComponent<MeshRenderer>().material;
                     AttachTextMesh(nextObject, _anchorNumberToFind);
                     otherSpawnedObjects.Add(nextObject);
@@ -537,5 +541,15 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         /// Gets or sets the base URL for the example sharing service.
         /// </summary>
         public string BaseSharingUrl { get => baseSharingUrl; set => baseSharingUrl = value; }
+
+        /// <summary>
+        /// Additional script to spawn object
+        /// </summary>
+        public void SpawnPerson()
+        {
+            //GameObject anchor = GameObject.Find("Person");
+            myPos = Instantiate(personPrefab, myPos - new Vector3(0, 0, 1), Quaternion.identity).transform.position;
+
+        }
     }
 }
